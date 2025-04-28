@@ -1,7 +1,7 @@
-import random
 import math
-import time
-import matplotlib.pyplot as plt
+import random
+
+"The functions required to run a classical exmaple of shor's algorithm, cut from this repo's original shors.py"
 
 def find_period(a, N):
     """Brute-force period finding."""
@@ -63,47 +63,3 @@ def shor_classical_simulation(N, max_attempts=5, verbose=False):
     if verbose:
         print("\nFailed to find factors after multiple attempts.")
     return None, None
-
-# Benchmarking the simulation for increasing semiprimes
-def benchmark_shor(min_bits=4, max_bits=12):
-    results = []
-    for bits in range(min_bits, max_bits + 1):
-        # Generate small semiprime
-        p = random.getrandbits(bits // 2)
-        q = random.getrandbits(bits // 2)
-        p, q = max(p, 3), max(q, 3)
-        if p % 2 == 0: p += 1
-        if q % 2 == 0: q += 1
-        N = p * q
-
-        start_time = time.time()
-        factors, period = shor_classical_simulation(N)
-        elapsed = time.time() - start_time
-
-        results.append({
-            'bits': bits,
-            'N': N,
-            'factors': factors,
-            'period': period,
-            'time': elapsed
-        })
-
-    return results
-
-# Run the benchmark
-benchmark_results = benchmark_shor()
-
-# Plotting
-bit_lengths = [r['bits'] for r in benchmark_results]
-times = [r['time'] for r in benchmark_results]
-
-plt.figure(figsize=(10, 6))
-plt.plot(bit_lengths, times, marker='o')
-plt.title("Classical Simulation of Shor's Algorithm")
-plt.xlabel("Bit length of N")
-plt.ylabel("Runtime (seconds)")
-plt.grid(True)
-plt.show()
-
-# run verbose demo on a specific small N
-shor_classical_simulation(55, verbose=True)
