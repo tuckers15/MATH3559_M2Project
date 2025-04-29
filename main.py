@@ -3,7 +3,7 @@ from plotter import plot_runtime, plot_memory, plot_success_rate
 from shor import shor_classical_simulation
 
 def main():
-    results = benchmark_shor(min_bits=4, max_bits=12, trials_per_bit=3)
+    results = benchmark_shor(min_bits=4, max_bits=25, trials_per_bit=3)
 
     plot_runtime(results)
     plot_memory(results)
