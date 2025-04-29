@@ -1,6 +1,6 @@
 # Classical Simulation of Shor's Algorithm
 
-Demonstrating the future insecurity of RSA key integers in a Post-Quantum World
+Exploring the future insecurity of RSA encryption keys in a Post-Quantum World
 
 Contributors: Wyatt Chrisman, Cam Kirn, Tucker Schulz
 
